@@ -1,3 +1,5 @@
+[![Hex.pm](https://img.shields.io/hexpm/v/slender_channel.svg)]()
+
 # SlenderChannel
 
 A small, dependency-free module that exposes helpful macros for working with Phoenix Channels.
