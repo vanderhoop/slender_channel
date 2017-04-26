@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/vanderhoop/slender_channel.svg?style=shield)](https://circleci.com/gh/stride-nyc/remote_retro)
 [![Hex.pm](https://img.shields.io/hexpm/v/slender_channel.svg)]()
 
 # SlenderChannel
