@@ -10,6 +10,7 @@ defmodule SlenderChannelTest do
     end
 
     handle_in_and_broadcast "nonsense", %{"blurg" => "tastic"}
+    handle_in_and_broadcast_from "new_idea", %{"cold" => "soda"}
   end
 
   describe "handle_in_and_broadcast/2" do
@@ -19,6 +20,16 @@ defmodule SlenderChannelTest do
       refute_broadcast "nonsense", _params
       push socket, "nonsense", %{"blurg" => "tastic"}
       assert_broadcast "nonsense", %{"blurg" => "tastic"}
+    end
+  end
+
+  describe "handle_in_and_broadcast_from/2" do
+    test "handles the given event and message, broadcasting them in turn" do
+      socket = subscribe_and_join!(socket(), SandboxChannel, "room:lobby")
+
+      refute_broadcast "new_idea", _params
+      push socket, "new_idea", %{"cold" => "soda"}
+      assert_broadcast "new_idea", %{"cold" => "soda"}
     end
   end
 end

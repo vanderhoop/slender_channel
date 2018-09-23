@@ -30,13 +30,20 @@ And leverage the macros within said channel.
 
 ```elixir
 handle_in_and_broadcast "bobby_dumped_stacy", %{"pettiness" => 10}
+
+handle_in_and_broadcast_from "urgent message", %{"ETA" => "10 minutes"}
 ```
 
 Under the hood, becomes:
 
 ```elixir
 def handle_in("bobby_dumped_stacy", %{"pettiness" => 10}, socket)
-  broadcast! socket, "bobby_dumped_stacy", %{"pettiness" => 10}
+  Phoenix.Channel.broadcast! socket, "bobby_dumped_stacy", %{"pettiness" => 10}
+  {:noreply, socket}
+end
+
+def handle_in("urgent message", %{"ETA" => "10 minutes"}, socket) do
+  Phoenix.Channel.broadcast_from! socket, "urgent message", %{"ETA" => "10 minutes"}
   {:noreply, socket}
 end
 ```
