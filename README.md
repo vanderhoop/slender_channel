@@ -11,7 +11,7 @@ The package can be installed by adding `slender_channel` to your list of depende
 
 ```elixir
 def deps do
-  [{:slender_channel, "~> 0.1.0"}]
+  [{:slender_channel, "~> 0.2.0"}]
 end
 ```
 

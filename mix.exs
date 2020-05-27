@@ -5,7 +5,7 @@ defmodule SlenderChannel.Mixfile do
     [
       app: :slender_channel,
       version: "0.2.0",
-      elixir: "~> 1.3",
+      elixir: "~> 1.8.2",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
       description: "Exposes helpful macros for working with Phoenix Channels",
