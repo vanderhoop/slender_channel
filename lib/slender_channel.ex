@@ -23,7 +23,7 @@ defmodule SlenderChannel do
       end
 
   """
-  defmacro handle_in_and_broadcast(event, payload) do
+  defmacro handle_in_and_broadcast!(event, payload) do
     quote do
       def handle_in(unquote(event), unquote(payload), socket) do
         Phoenix.Channel.broadcast! socket, unquote(event), unquote(payload)
@@ -46,7 +46,7 @@ defmodule SlenderChannel do
       end
 
   """
-  defmacro handle_in_and_broadcast_from(event, payload) do
+  defmacro handle_in_and_broadcast_from!(event, payload) do
     quote do
       def handle_in(unquote(event), unquote(payload), socket) do
         Phoenix.Channel.broadcast_from! socket, unquote(event), unquote(payload)
