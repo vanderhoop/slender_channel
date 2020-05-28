@@ -4,7 +4,7 @@ defmodule SlenderChannel.Mixfile do
   def project do
     [
       app: :slender_channel,
-      version: "0.2.0",
+      version: "1.0.0",
       elixir: "~> 1.8.2",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
@@ -22,7 +22,8 @@ defmodule SlenderChannel.Mixfile do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:phoenix, github: "phoenixframework/phoenix", only: :test},
-      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false}
+      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
+      {:mock, "~> 0.3.4", only: :test},
     ]
   end
 
