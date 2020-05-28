@@ -1,6 +1,14 @@
 defmodule SlenderChannelTest do
   use SlenderChannel.ChannelCase, async: true
 
+  # these assertions require macros so that we can pass a pattern to match
+  defmacro assert_broadcast_to_other_clients_only(message, match) do
+    quote do
+      assert_broadcast(unquote(message), unquote(match))
+      refute_push(unquote(message), unquote(match))
+    end
+  end
+
   defmodule SandboxChannel do
     use Phoenix.Channel
     use SlenderChannel
@@ -27,9 +35,8 @@ defmodule SlenderChannelTest do
     test "handles the given event and message, broadcasting them in turn" do
       socket = subscribe_and_join!(socket(), SandboxChannel, "room:lobby")
 
-      refute_broadcast "new_idea", _params
       push socket, "new_idea", %{"cold" => "soda"}
-      assert_broadcast "new_idea", %{"cold" => "soda"}
+      assert_broadcast_to_other_clients_only("new_idea", %{"cold" => "soda"})
     end
   end
 end
