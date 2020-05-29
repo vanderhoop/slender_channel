@@ -21,7 +21,8 @@ defmodule SlenderChannel.Mixfile do
   defp deps do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
-      {:phoenix, github: "phoenixframework/phoenix", only: :test}
+      {:phoenix, github: "phoenixframework/phoenix", only: :test},
+      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false}
     ]
   end
 
